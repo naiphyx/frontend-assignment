@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-node-sass --watch style.scss ./dist
+node-sass --watch style.scss ./dist/style.css
 
