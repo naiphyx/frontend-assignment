@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-node-sass style.scss ./dist/style.css
+
+
+/Users/Vikki/node_modules/node-sass/bin/node-sass style.scss ./dist/style.css
 
