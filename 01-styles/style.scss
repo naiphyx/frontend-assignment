@@ -52,10 +52,6 @@ abbr {
 
 /* specific divs */
 
-header {
-  padding-top: 20px;
-  height: 87px;
-}
 
 @mixin heading($margin-top, $width, $height, $url, $float) {
   background: transparent url($url) no-repeat top left;
@@ -69,12 +65,17 @@ header {
   overflow: hidden;
 }
 
-header h1 {
-  @include heading(10px, 219px, 87px, h1.gif, left);
-  display: block;
-}
+header {
+  padding-top: 20px;
+  height: 87px;
 
-header h2 {
-  @include heading(58px, 200px, 18px, h2.gif, right);
-  margin-bottom: 40px;
+  h1 {
+    @include heading(10px, 219px, 87px, h1.gif, left);
+    display: block;
+  }
+
+  h2 {
+    @include heading(58px, 200px, 18px, h2.gif, right);
+    margin-bottom: 40px;
+  }
 }
