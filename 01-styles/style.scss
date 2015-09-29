@@ -9,7 +9,7 @@ html {
   }
 
 body {
-  @extend html
+  @extend html;
   font: 75% $fonts;
   line-height: 1.88889;
   color: #555753;
@@ -69,13 +69,44 @@ header {
   height: 87px;
 
   h1 {
-    @include heading(10px, 219px, 87px, h1.gif, left);
+    @include heading(10px, 219px, 87px, "h1.gif", left);
     display: block;
   }
 
   h2 {
-    @include heading(58px, 200px, 18px, h2.gif, right);
+    @include heading(58px, 200px, 18px, "h2.gif", right);
     margin-bottom: 40px;
   }
+}
 
+.summary {
+  clear: both;
+  margin: 20px 20px 20px 10px;
+  width: 160px;
+  float: left;
+
+  p {
+  font: italic 1.1em/2.2 $fonts;
+  text-align: center;
+  }
+}
+
+.preamble {
+  clear: right;
+  padding: 0px 10px 0 10px;
+  }
+
+.supporting {
+  padding-left: 10px;
+  margin-bottom: 40px;
+  }
+
+footer {
+  text-align: center;
+
+  a{
+    &:link, &:visited {
+      margin-right: 20px;
+    }
+  }
 }
