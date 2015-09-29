@@ -110,3 +110,17 @@ footer {
     }
   }
 }
+
+.sidebar {
+  margin-left: 600px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  .wrapper {
+  font: 10px verdana, sans-serif;
+  background: transparent url(paper-bg.jpg) top left repeat-y;
+  padding: 10px;
+  margin-top: 150px;
+  width: 130px;
+  }
