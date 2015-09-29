@@ -52,12 +52,11 @@ abbr {
 /* specific divs */
 
 
-@mixin heading($margin-top, $width, $height, $url, $float) {
+@mixin headandside($margin, $width, $height, $url) {
   background: transparent url($url) no-repeat top left;
-  margin-top: $margin-top;
+  margin: $margin;
   width: $width;
   height: $height;
-  float: $float;
 
   text-indent: 100%;
   white-space: nowrap;
@@ -69,13 +68,14 @@ header {
   height: 87px;
 
   h1 {
-    @include heading(10px, 219px, 87px, "h1.gif", left);
+    @include headandside(10px 0 0 0, 219px, 87px, "h1.gif");
     display: block;
+    float: left;
   }
 
   h2 {
-    @include heading(58px, 200px, 18px, "h2.gif", right);
-    margin-bottom: 40px;
+    @include headandside(58px 0 40px 0, 200px, 18px, "h2.gif");
+    float: right;
   }
 }
 
@@ -124,3 +124,17 @@ footer {
   margin-top: 150px;
   width: 130px;
   }
+
+  h3.select {
+  @include headandside(10px 0 5px 0, 97px, 16px, "h3.gif")
+  }
+
+  h3.archives {
+  @include headandside(25px 0 5px 0, 57px, 14px, "h5.gif");
+  }
+
+  h3.resources {
+  @include headandside(25px 0 5px 0, 63px, 10px, "h6.gif");
+  }
+
+}
