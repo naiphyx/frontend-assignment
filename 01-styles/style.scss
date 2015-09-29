@@ -51,6 +51,18 @@ abbr {
 
 /* specific divs */
 
+.page-wrapper {
+  background: url(zen-bg.jpg) no-repeat top left;
+  padding: 0 175px 0 110px;
+  margin: 0;
+  position: relative;
+  }
+
+.intro {
+  min-width: 470px;
+  width: 100%;
+  }
+
 
 @mixin headandside($margin, $width, $height, $url) {
   background: transparent url($url) no-repeat top left;
@@ -64,9 +76,6 @@ abbr {
 }
 
 header {
-  padding-top: 20px;
-  height: 87px;
-
   h1 {
     @include headandside(10px 0 0 0, 219px, 87px, "h1.gif");
     display: block;
@@ -77,6 +86,9 @@ header {
     @include headandside(58px 0 40px 0, 200px, 18px, "h2.gif");
     float: right;
   }
+
+  padding-top: 20px;
+  height: 87px;
 }
 
 .summary {
@@ -99,7 +111,7 @@ header {
 .supporting {
   padding-left: 10px;
   margin-bottom: 40px;
-  }
+}
 
 footer {
   text-align: center;
@@ -137,4 +149,35 @@ footer {
   @include headandside(25px 0 5px 0, 63px, 10px, "h6.gif");
   }
 
+  ul {
+  margin: 0;
+  padding: 0;;
+  }
+
+  li {
+  line-height: 1.3em;
+  background: transparent url(cr1.gif) no-repeat top center;
+  display: block;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  list-style-type: none;
+
+    a {
+      &:link {
+        color: #988F5E;
+      }
+      &:visited {
+        color: #B3AE94;
+      }
+    }
+  }
+}
+
+.extra1 {
+  background: transparent url(cr2.gif) top left no-repeat;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 148px;
+  height: 110px;
 }
