@@ -9,12 +9,11 @@ html {
   }
 
 body {
+  @extend html
   font: 75% $fonts;
   line-height: 1.88889;
   color: #555753;
   background: #fff url(blossoms.jpg) no-repeat bottom right;
-  margin: 0;
-  padding: 0;
   }
 
 p {
@@ -78,4 +77,5 @@ header {
     @include heading(58px, 200px, 18px, h2.gif, right);
     margin-bottom: 40px;
   }
+
 }
