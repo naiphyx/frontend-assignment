@@ -1,2 +1,11 @@
+# system
 .DS_Store
-./dist/
+
+# IDE
+.idea/
+
+# logs
+npm-debug.log
+
+# deps
+node_modules/
