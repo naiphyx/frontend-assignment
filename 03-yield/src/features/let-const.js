@@ -25,5 +25,27 @@ export function es5() {
 }
 
 export function es6() {
-  
+  let o = {}
+  const consts = {}
+
+  Object.defineProperty(consts, 'BASE', {
+    value: 2
+  })
+
+  function constants(val) {
+    return Math.pow(consts.BASE, val)
+  }
+
+  function scope(n) {
+    let sum = 0
+    for (let i = 0; i < n; i += 1) {
+      sum += i
+    }
+    return i
+  }
+
+  o.constants = constants
+  o.scope = scope
+
+  return o
 }
