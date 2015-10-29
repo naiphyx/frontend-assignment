@@ -14,6 +14,17 @@ export default function() {
     })
   })
 
-  it.skip('should show Promise behavior in ES6', () => {
+  it('should show Promise behavior in ES6', () => {
+    const promise = new Promise((resolve, reject) => {
+      const val = 10
+      resolve(val)
+    })
+    promise
+      .then(val => {
+        console.log(val)
+      })
+      .catch(err => {
+        console.error(err)
+      })
   })
 }
