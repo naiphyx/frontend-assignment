@@ -1,4 +1,4 @@
-import init as App from './appfunctions'
+import init from './appfunctions'
 
 
-App.init();
+init();

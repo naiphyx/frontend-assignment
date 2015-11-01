@@ -16,110 +16,110 @@ Handlebars.registerHelper('eq', function (a, b, options) {
   });
 
 export function init() {
-      this.todos = store('todos-jquery');
-      this.cacheElements();
-      this.bindEvents();
+      todos = store('todos-jquery');
+      cacheElements();
+      bindEvents();
 
       new Router({
         '/:filter': function (filter) {
-          this.filter = filter;
-          this.render();
+          filter = filter;
+          render();
         }.bind(this)
       }).init('/all');
     }
 
 export function cacheElements() {
-      this.todoTemplate = Handlebars.compile($('#todo-template').html());
-      this.footerTemplate = Handlebars.compile($('#footer-template').html());
-      this.$todoApp = $('#todoapp');
-      this.$header = this.$todoApp.find('#header');
-      this.$main = this.$todoApp.find('#main');
-      this.$footer = this.$todoApp.find('#footer');
-      this.$newTodo = this.$header.find('#new-todo');
-      this.$toggleAll = this.$main.find('#toggle-all');
-      this.$todoList = this.$main.find('#todo-list');
-      this.$count = this.$footer.find('#todo-count');
-      this.$clearBtn = this.$footer.find('#clear-completed');
+      todoTemplate = Handlebars.compile($('#todo-template').html());
+      footerTemplate = Handlebars.compile($('#footer-template').html());
+      $todoApp = $('#todoapp');
+      $header = $todoApp.find('#header');
+      $main = $todoApp.find('#main');
+      $footer = $todoApp.find('#footer');
+      $newTodo = $header.find('#new-todo');
+      $toggleAll = $main.find('#toggle-all');
+      $todoList = $main.find('#todo-list');
+      $count = $footer.find('#todo-count');
+      $clearBtn = $footer.find('#clear-completed');
     }
 
 export function bindEvents() {
-      var list = this.$todoList;
-      this.$newTodo.on('keyup', this.create.bind(this));
-      this.$toggleAll.on('change', this.toggleAll.bind(this));
-      this.$footer.on('click', '#clear-completed', this.destroyCompleted.bind(this));
-      list.on('change', '.toggle', this.toggle.bind(this));
-      list.on('dblclick', 'label', this.edit.bind(this));
-      list.on('keyup', '.edit', this.editKeyup.bind(this));
-      list.on('focusout', '.edit', this.update.bind(this));
-      list.on('click', '.destroy', this.destroy.bind(this));
+      var list = $todoList;
+      $newTodo.on('keyup', create.bind(this));
+      $toggleAll.on('change', toggleAll.bind(this));
+      $footer.on('click', '#clear-completed', destroyCompleted.bind(this));
+      list.on('change', '.toggle', toggle.bind(this));
+      list.on('dblclick', 'label', edit.bind(this));
+      list.on('keyup', '.edit', editKeyup.bind(this));
+      list.on('focusout', '.edit', update.bind(this));
+      list.on('click', '.destroy', destroy.bind(this));
     }
 
 export function render() {
-      var todos = this.getFilteredTodos();
-      this.$todoList.html(this.todoTemplate(todos));
-      this.$main.toggle(todos.length > 0);
-      this.$toggleAll.prop('checked', this.getActiveTodos().length === 0);
-      this.renderFooter();
-      this.$newTodo.focus();
-      store('todos-jquery', this.todos);
+      var todos = getFilteredTodos();
+      $todoList.html(todoTemplate(todos));
+      $main.toggle(todos.length > 0);
+      $toggleAll.prop('checked', getActiveTodos().length === 0);
+      renderFooter();
+      $newTodo.focus();
+      store('todos-jquery', todos);
     }
 
 export function renderFooter() {
-      var todoCount = this.todos.length;
-      var activeTodoCount = this.getActiveTodos().length;
-      var template = this.footerTemplate({
+      var todoCount = todos.length;
+      var activeTodoCount = getActiveTodos().length;
+      var template = footerTemplate({
         activeTodoCount: activeTodoCount,
         activeTodoWord: pluralize(activeTodoCount, 'item'),
         completedTodos: todoCount - activeTodoCount,
         filter: this.filter
       });
 
-      this.$footer.toggle(todoCount > 0).html(template);
+      $footer.toggle(todoCount > 0).html(template);
     }
 
 export function toggleAll(e) {
       var isChecked = $(e.target).prop('checked');
 
-      this.todos.forEach(function (todo) {
+      todos.forEach(function (todo) {
         todo.completed = isChecked;
       });
 
-      this.render();
+      render();
     }
 
 export function getActiveTodos() {
-      return this.todos.filter(function (todo) {
+      return todos.filter(function (todo) {
         return !todo.completed;
       });
     }
 
 export function getCompletedTodos() {
-      return this.todos.filter(function (todo) {
+      return todos.filter(function (todo) {
         return todo.completed;
       });
     }
 
 export function getFilteredTodos() {
-      if (this.filter === 'active') {
-        return this.getActiveTodos();
+      if (filter === 'active') {
+        return getActiveTodos();
       }
 
-      if (this.filter === 'completed') {
-        return this.getCompletedTodos();
+      if (filter === 'completed') {
+        return getCompletedTodos();
       }
 
-      return this.todos;
+      return todos;
     }
 
 export function destroyCompleted() {
-      this.todos = this.getActiveTodos();
-      this.filter = 'all';
-      this.render();
+      todos = getActiveTodos();
+      filter = 'all';
+      render();
     }
 
 export function indexFromEl(el) {
       var id = $(el).closest('li').data('id');
-      var todos = this.todos;
+      var todos = todos;
       var i = todos.length;
 
       while (i--) {
@@ -137,7 +137,7 @@ export function create(e) {
         return;
       }
 
-      this.todos.push({
+      todos.push({
         id: uuid(),
         title: val,
         completed: false
@@ -145,13 +145,13 @@ export function create(e) {
 
       $input.val('');
 
-      this.render();
+      render();
     }
 
 export function toggle(e) {
       var i = this.indexFromEl(e.target);
-      this.todos[i].completed = !this.todos[i].completed;
-      this.render();
+      todos[i].completed = !todos[i].completed;
+      render();
     }
 
 export function edit(e) {
@@ -176,19 +176,19 @@ export function update(e) {
 
       if ($el.data('abort')) {
         $el.data('abort', false);
-        this.render();
+        render();
         return;
       }
 
-      var i = this.indexFromEl(el);
+      var i = indexFromEl(el);
 
       if (val) {
-        this.todos[i].title = val;
+        todos[i].title = val;
       } else {
-        this.todos.splice(i, 1);
+        todos.splice(i, 1);
       }
 
-      this.render();
+      render();
     }
 
 export function destroy(e) {

@@ -5,4 +5,10 @@ export function es5(cb) {
 }
 
 export function es6() {
+	 const promise = new Promise((resolve, reject) => {
+        setTimeout(function() {
+          resolve(val)
+        }, 1)
+      })
+  return promise
 }
