@@ -9,14 +9,14 @@ import {
   store,
   uuid,
   pluralize
-} from './util'
+} as util from './util'
 
 Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
   });
 
 export function init() {
-      todos = store('todos-jquery');
+      todos = util.store('todos-jquery');
       cacheElements();
       bindEvents();
 
@@ -61,7 +61,7 @@ export function render() {
       $toggleAll.prop('checked', getActiveTodos().length === 0);
       renderFooter();
       $newTodo.focus();
-      store('todos-jquery', todos);
+      util.store('todos-jquery', todos);
     }
 
 export function renderFooter() {
@@ -69,7 +69,7 @@ export function renderFooter() {
       var activeTodoCount = getActiveTodos().length;
       var template = footerTemplate({
         activeTodoCount: activeTodoCount,
-        activeTodoWord: pluralize(activeTodoCount, 'item'),
+        activeTodoWord: util.pluralize(activeTodoCount, 'item'),
         completedTodos: todoCount - activeTodoCount,
         filter: this.filter
       });
@@ -138,7 +138,7 @@ export function create(e) {
       }
 
       todos.push({
-        id: uuid(),
+        id: util.uuid(),
         title: val,
         completed: false
       });
