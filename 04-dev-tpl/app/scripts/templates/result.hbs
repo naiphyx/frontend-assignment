@@ -1,0 +1,21 @@
+<h2>Result</h2>
+<table class="table table-hover table-condensed table-responsive">
+  <thead>
+  <th>Constructor</th>
+  <th>Driver</th>
+  <th>Fastest Lap</th>
+  <th>Time</th>
+  <th>Points</th>
+  </thead>
+  <tbody>
+  {{#each results}}
+    <tr>
+      <td>{{Constructor.name}}</td>
+      <td>{{Driver.givenName}} {{Driver.familyName}}</td>
+      <td>{{FastestLap.Time.time}}</td>
+      <td>{{Time.time}}</td>
+      <th>{{points}}</th>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

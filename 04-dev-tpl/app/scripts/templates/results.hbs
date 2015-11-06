@@ -1,0 +1,21 @@
+<h2>Results</h2>
+<table class="table table-hover table-condensed table-responsive">
+  <thead>
+  <th>Round</th>
+  <th>Name</th>
+  <th>Season</th>
+  <th>Date</th>
+  <th>Start</th>
+  </thead>
+  <tbody>
+  {{#each races}}
+    <tr>
+      <td>{{round}}</td>
+      <td><a href="/results/{{season}}/{{round}}">{{raceName}}</a></td>
+      <td>{{season}}</td>
+      <td>{{dateFormat date format="D. MMMM YYYY"}}</td>
+      <td>{{time}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
