@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import page from 'page'
-import Handlebars from 'hbsfy/runtime'
+//import Handlebars from 'hbsfy/runtime'
 //import * as pages from './pages'
 //import dateFormat from './helpers/date-format'
 //import times from 'handlebars-helper-repeat'
@@ -23,16 +23,11 @@ page('*', function(ctx, next) {
   next()
 })
 
-function bla (x)
-{
-  console.log(x)
-}
-
 page('/', '/home')
-page('/home', bla("fresh"))
-
-page('/constructors', pages.constructors)
-page('/constructors/:constructor', pages.constructor)
+page('/home', console.log("home"))
+/*
+page('/constructors', console.log("constructors"))
+page('/constructors/:constructor', console.log("constructors"))
 
 page('/drivers', pages.drivers)
 page('/drivers/:driver', pages.driver)
@@ -44,5 +39,5 @@ page('/contact', pages.contact)
 
 page('/error', pages.internalError)
 page('*', pages.notFound)
-
+*/
 page()
