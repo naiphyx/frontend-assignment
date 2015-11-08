@@ -1,10 +1,10 @@
 import $ from 'jquery'
 import page from 'page'
 import Handlebars from 'hbsfy/runtime'
-import * as pages from './pages'
+//import * as pages from './pages'
 //import dateFormat from './helpers/date-format'
 //import times from 'handlebars-helper-repeat'
-import eq from './helpers/eq'
+//import eq from './helpers/eq'
 
 const $nav = $('#nav')
 
@@ -21,15 +21,15 @@ page('*', function(ctx, next) {
     .parent()
     .addClass('active')
   next()
-  //console.log("eehhhhhh")
 })
 
-function bla(x) {
-	console.log(x)
+function bla (x)
+{
+  console.log(x)
 }
 
 page('/', '/home')
-page('/home', bla("lulu"))
+page('/home', bla("fresh"))
 
 page('/constructors', pages.constructors)
 page('/constructors/:constructor', pages.constructor)
