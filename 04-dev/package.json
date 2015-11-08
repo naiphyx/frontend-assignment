@@ -8,6 +8,13 @@
   },
   "author": "Hannes Moser <hannes@impossiblearts.com>",
   "license": "MIT",
+  "browserify-shim": {
+    "bootstrap": {
+      "depends": [
+        "jquery:jQuery"
+      ]
+    }
+  },
   "devDependencies": {
     "babel": "^6.0.15",
     "babel-eslint": "^4.1.4",
@@ -23,6 +30,7 @@
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.3.1",
+    "handlebars": "^4.0.4",
     "hbsfy": "^2.4.1",
     "jquery": "^2.1.4",
     "less": "^2.5.3",
