@@ -1,12 +1,14 @@
 import $ from 'jquery'
 import page from 'page'
-//import Handlebars from 'hbsfy/runtime'
+import Handlebars from 'hbsfy/runtime'
+import tplHome from './templates/home.hbs'
 //import * as pages from './pages'
 //import dateFormat from './helpers/date-format'
 //import times from 'handlebars-helper-repeat'
 //import eq from './helpers/eq'
 
 const $nav = $('#nav')
+const $content = $('#content')
 
 //Handlebars.registerHelper('dateFormat', dateFormat)
 //Handlebars.registerHelper('times', times)
@@ -23,8 +25,12 @@ page('*', function(ctx, next) {
   next()
 })
 
+function home() {
+  $content.html(tplHome())
+}
+
 page('/', '/home')
-page('/home', console.log("home"))
+page('/home', home)
 /*
 page('/constructors', console.log("constructors"))
 page('/constructors/:constructor', console.log("constructors"))
