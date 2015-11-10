@@ -2,6 +2,8 @@ import $ from 'jquery'
 import page from 'page'
 import Handlebars from 'hbsfy/runtime'
 import tplHome from './templates/home.hbs'
+import tplNotFound from './templates/notfound.hbs'
+import tplContact from './templates/contact.hbs'
 //import * as pages from './pages'
 //import dateFormat from './helpers/date-format'
 //import times from 'handlebars-helper-repeat'
@@ -29,6 +31,14 @@ function home() {
   $content.html(tplHome())
 }
 
+function notFound() {
+	$content.html(tplNotFound())
+}
+
+function contact() {
+	$content.html(tplContact())
+}
+
 page('/', '/home')
 page('/home', home)
 /*
@@ -41,9 +51,10 @@ page('/drivers/:driver', pages.driver)
 page('/results', pages.results)
 page('/results/:season/:index', pages.result)
 
-page('/contact', pages.contact)
-
 page('/error', pages.internalError)
-page('*', pages.notFound)
 */
+
+page('/contact', contact)
+
+page('*', notFound)
 page()
