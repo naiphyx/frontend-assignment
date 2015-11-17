@@ -22,16 +22,21 @@ export function contact() {
 	$content.html(tplContact())
 }
 
-export function drivers(ctx) {
+export function drivers() {
 	fetch(url + `/drivers.json`)
 	.then(response => {
+		if(response.status >= 400) {
+			console.log("error")
+		}
 		return response.json()
 	})
 	.then(data => {
 		$content.html(
-			tplDrivers({}))
+			tplDrivers({
+				drivers: data.MRData.DriverTable.Drivers
+			}))
 	})
-	.catch(err =>{
+	.catch(err => {
 		console.log("error")
 	})
 }
