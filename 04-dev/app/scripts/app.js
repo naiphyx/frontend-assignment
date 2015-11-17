@@ -1,20 +1,17 @@
 import $ from 'jquery'
 import page from 'page'
 import Handlebars from 'hbsfy/runtime'
-import tplHome from './templates/home.hbs'
-import tplNotFound from './templates/notfound.hbs'
-import tplContact from './templates/contact.hbs'
+import * as api from './api'
 //import * as pages from './pages'
 //import dateFormat from './helpers/date-format'
 //import times from 'handlebars-helper-repeat'
 //import eq from './helpers/eq'
 
-const $nav = $('#nav')
-const $content = $('#content')
-
 //Handlebars.registerHelper('dateFormat', dateFormat)
 //Handlebars.registerHelper('times', times)
 //Handlebars.registerHelper('eq', eq)
+
+const $nav = $('#nav')
 
 page('*', function(ctx, next) {
   $nav
@@ -27,34 +24,22 @@ page('*', function(ctx, next) {
   next()
 })
 
-function home() {
-  $content.html(tplHome())
-}
-
-function notFound() {
-	$content.html(tplNotFound())
-}
-
-function contact() {
-	$content.html(tplContact())
-}
-
 page('/', '/home')
-page('/home', home)
+page('/home', api.home)
 /*
 page('/constructors', console.log("constructors"))
 page('/constructors/:constructor', console.log("constructors"))
-
-page('/drivers', pages.drivers)
-page('/drivers/:driver', pages.driver)
-
+*/
+page('/drivers', api.drivers)
+//page('/drivers/:driver', pages.driver)
+/*
 page('/results', pages.results)
 page('/results/:season/:index', pages.result)
 
 page('/error', pages.internalError)
 */
 
-page('/contact', contact)
+page('/contact', api.contact)
 
-page('*', notFound)
+page('*', api.notFound)
 page()

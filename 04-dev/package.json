@@ -32,6 +32,7 @@
     "grunt-eslint": "^17.3.1",
     "handlebars": "^4.0.4",
     "hbsfy": "^2.4.1",
+    "isomorphic-fetch": "^2.2.0",
     "jquery": "^2.1.4",
     "less": "^2.5.3",
     "less-plugin-autoprefix": "^1.5.1",
