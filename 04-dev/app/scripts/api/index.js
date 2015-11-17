@@ -7,7 +7,7 @@ import tplHome from '../templates/home.hbs'
 import tplNotFound from '../templates/notfound.hbs'
 import tplContact from '../templates/contact.hbs'
 
-const url = 'http://ergast.com/api/f1' // http://ergast.com/mrd/
+const apiurl = 'http://ergast.com/api/f1' // http://ergast.com/mrd/
 const $content = $('#content')
 
 export function home() {
@@ -23,10 +23,10 @@ export function contact() {
 }
 
 export function drivers() {
-	fetch(url + `/drivers.json`)
+	fetch(apiurl + '/drivers.json?limit=10')
 	.then(response => {
 		if(response.status >= 400) {
-			console.log("error")
+			console.log("error01")
 		}
 		return response.json()
 	})
@@ -37,6 +37,6 @@ export function drivers() {
 			}))
 	})
 	.catch(err => {
-		console.log("error")
+		console.log("errorfinal")
 	})
 }
