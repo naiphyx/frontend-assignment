@@ -34,9 +34,8 @@ page('/drivers/:driver', api.driver)
 /*
 page('/results', pages.results)
 page('/results/:season/:index', pages.result)
-
-page('/error', pages.internalError)
 */
+page('/error', api.internalError)
 
 page('/contact', api.contact)
 

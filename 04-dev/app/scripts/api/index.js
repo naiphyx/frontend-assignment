@@ -7,9 +7,11 @@ import tplDriver from '../templates/driver.hbs'
 import tplHome from '../templates/home.hbs'
 import tplNotFound from '../templates/notfound.hbs'
 import tplContact from '../templates/contact.hbs'
+import tplError from '../templates/error.hbs'
 
 const apiurl = 'http://ergast.com/api/f1' // http://ergast.com/mrd/
 const $content = $('#content')
+let globalError
 
 export function home() {
   $content.html(tplHome())
@@ -27,7 +29,7 @@ export function drivers() {
 	fetch(`${apiurl}/drivers.json`)
 	.then(response => {
 		if(response.status >= 400) {
-			console.log("error01")
+			return page('error')
 		}
 		return response.json()
 	})
@@ -42,7 +44,8 @@ export function drivers() {
 			))
 	})
 	.catch(err => {
-		console.log("errorfinal")
+		globalError = err
+      	page('/error')
 	})
 }
 
@@ -50,7 +53,7 @@ export function driver(ctx) {
 	fetch(`${apiurl}/drivers/${ctx.params.driver}.json`)
 	.then(response => {
 		if(response.status >= 400) {
-			console.log("error01")
+			return page('error')
 		}
 		return response.json()
 	})
@@ -62,6 +65,7 @@ export function driver(ctx) {
 			}))
 	})
 	.catch(err => {
-		console.log("errorfinal")
+		globalError = err
+      	page('/error')
 	})
 }
