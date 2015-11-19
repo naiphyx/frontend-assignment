@@ -2,9 +2,11 @@ import $ from 'jquery'
 import page from 'page'
 import fetch from 'isomorphic-fetch'
 //import url from 'url'
+import tplHome from '../templates/home.hbs'
+import tplConstructors from '../templates/constructors.hbs'
+import tplConstructor from '../templates/constructor.hbs'
 import tplDrivers from '../templates/drivers.hbs'
 import tplDriver from '../templates/driver.hbs'
-import tplHome from '../templates/home.hbs'
 import tplNotFound from '../templates/notfound.hbs'
 import tplContact from '../templates/contact.hbs'
 import tplError from '../templates/error.hbs'
@@ -23,6 +25,30 @@ export function notFound() {
 
 export function contact() {
 	$content.html(tplContact())
+}
+
+export function constructors() {
+	fetch(`${apiurl}/constructors.json`)
+	.then(response => {
+		if(response.status >= 400) {
+			return page('error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		const constructorsData =  data.MRData.ConstructorTable.Constructors
+
+		$content.html(
+			tplConstructors(
+			{
+				constructors: constructorsData
+			}
+			))
+	})
+	.catch(err => {
+		globalError = err
+      	page('/error')
+	})
 }
 
 export function drivers() {

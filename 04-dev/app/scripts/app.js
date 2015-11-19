@@ -25,10 +25,10 @@ page('*', function(ctx, next) {
 
 page('/', '/home')
 page('/home', api.home)
-/*
-page('/constructors', console.log("constructors"))
-page('/constructors/:constructor', console.log("constructors"))
-*/
+
+page('/constructors', api.constructors)
+//page('/constructors/:constructor', console.log("constructors"))
+
 page('/drivers', api.drivers)
 page('/drivers/:driver', api.driver)
 /*
