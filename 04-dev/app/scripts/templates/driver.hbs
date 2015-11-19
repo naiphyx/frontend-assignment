@@ -1,1 +1,9 @@
-<h2>Driver: {{driver.givenName}} {{driver.familyName}}</h2>
+<h2>{{driver.givenName}} {{driver.familyName}}</h2>
+<ul>
+	<li>Date of birht: {{driver.dateOfBirth}}</li>
+	<li>Nationality: {{driver.nationality}}</li>
+	<li><a href="{{driver.url}}" rel="external" target="_blank">
+          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+        </a>
+    </li>
+</ul>
