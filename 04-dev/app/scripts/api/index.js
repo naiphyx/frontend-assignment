@@ -23,7 +23,7 @@ export function contact() {
 }
 
 export function drivers() {
-	fetch(apiurl + '/drivers.json?limit=10')
+	fetch(`${apiurl}/drivers.json?limit=10`)
 	.then(response => {
 		if(response.status >= 400) {
 			console.log("error01")
@@ -31,10 +31,15 @@ export function drivers() {
 		return response.json()
 	})
 	.then(data => {
+		const driverData =  data.MRData.DriverTable.Drivers
+
 		$content.html(
-			tplDrivers({
-				drivers: data.MRData.DriverTable.Drivers
-			}))
+			tplDrivers(
+			{
+				drivers: driverData,
+				la: 2
+			}
+			))
 	})
 	.catch(err => {
 		console.log("errorfinal")
