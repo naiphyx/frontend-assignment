@@ -31,10 +31,10 @@ page('/constructors/:constructor', api.constructor)
 
 page('/drivers', api.drivers)
 page('/drivers/:driver', api.driver)
-/*
-page('/results', pages.results)
-page('/results/:season/:index', pages.result)
-*/
+
+page('/results', api.results)
+//page('/results/:season/:index', pages.result)
+
 page('/error', api.internalError)
 
 page('/contact', api.contact)

@@ -7,6 +7,7 @@ import tplConstructors from '../templates/constructors.hbs'
 import tplConstructor from '../templates/constructor.hbs'
 import tplDrivers from '../templates/drivers.hbs'
 import tplDriver from '../templates/driver.hbs'
+import tplResults from '../templates/results.hbs'
 import tplNotFound from '../templates/notfound.hbs'
 import tplContact from '../templates/contact.hbs'
 import tplError from '../templates/error.hbs'
@@ -110,6 +111,30 @@ export function driver(ctx) {
 			tplDriver({
 				driver: driverData
 			}))
+	})
+	.catch(err => {
+		globalError = err
+      	page('/error')
+	})
+}
+
+export function results() {
+	fetch(`${apiurl}/results.json`)
+	.then(response => {
+		if(response.status >= 400) {
+			return page('error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		const resultsData =  data.MRData.RaceTable.Races
+
+		$content.html(
+			tplResults(
+			{
+				races: resultsData
+			}
+			))
 	})
 	.catch(err => {
 		globalError = err
