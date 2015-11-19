@@ -51,6 +51,27 @@ export function constructors() {
 	})
 }
 
+export function constructor(ctx) {
+	fetch(`${apiurl}/constructors/${ctx.params.constructor}.json`)
+	.then(response => {
+		if(response.status >= 400) {
+			return page('error')
+		}
+		return response.json()
+	})
+	.then(data => {
+		const constructorData = data.MRData.ConstructorTable.Constructors[0]
+		$content.html(
+			tplConstructor({
+				constructor: constructorData
+			}))
+	})
+	.catch(err => {
+		globalError = err
+      	page('/error')
+	})
+}
+
 export function drivers() {
 	fetch(`${apiurl}/drivers.json`)
 	.then(response => {

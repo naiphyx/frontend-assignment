@@ -27,7 +27,7 @@ page('/', '/home')
 page('/home', api.home)
 
 page('/constructors', api.constructors)
-//page('/constructors/:constructor', console.log("constructors"))
+page('/constructors/:constructor', api.constructor)
 
 page('/drivers', api.drivers)
 page('/drivers/:driver', api.driver)
