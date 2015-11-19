@@ -30,7 +30,7 @@ page('/constructors', console.log("constructors"))
 page('/constructors/:constructor', console.log("constructors"))
 */
 page('/drivers', api.drivers)
-//page('/drivers/:driver', pages.driver)
+page('/drivers/:driver', api.driver)
 /*
 page('/results', pages.results)
 page('/results/:season/:index', pages.result)

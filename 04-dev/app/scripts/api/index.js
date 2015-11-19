@@ -3,6 +3,7 @@ import page from 'page'
 import fetch from 'isomorphic-fetch'
 //import url from 'url'
 import tplDrivers from '../templates/drivers.hbs'
+import tplDriver from '../templates/driver.hbs'
 import tplHome from '../templates/home.hbs'
 import tplNotFound from '../templates/notfound.hbs'
 import tplContact from '../templates/contact.hbs'
@@ -23,7 +24,7 @@ export function contact() {
 }
 
 export function drivers() {
-	fetch(`${apiurl}/drivers.json?limit=10`)
+	fetch(`${apiurl}/drivers.json`)
 	.then(response => {
 		if(response.status >= 400) {
 			console.log("error01")
@@ -31,15 +32,34 @@ export function drivers() {
 		return response.json()
 	})
 	.then(data => {
-		const driverData =  data.MRData.DriverTable.Drivers
+		const driversData =  data.MRData.DriverTable.Drivers
 
 		$content.html(
 			tplDrivers(
 			{
-				drivers: driverData,
-				la: 2
+				drivers: driversData
 			}
 			))
+	})
+	.catch(err => {
+		console.log("errorfinal")
+	})
+}
+
+export function driver(ctx) {
+	fetch(`${apiurl}/drivers/${ctx.params.driver}.json`)
+	.then(response => {
+		if(response.status >= 400) {
+			console.log("error01")
+		}
+		return response.json()
+	})
+	.then(data => {
+		const driverData = data.MRData.DriverTable.Drivers[0]
+		$content.html(
+			tplDriver({
+				driver: driverData
+			}))
 	})
 	.catch(err => {
 		console.log("errorfinal")
