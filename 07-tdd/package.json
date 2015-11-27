@@ -1,0 +1,15 @@
+{
+  "name": "07-tdd",
+  "version": "1.0.0",
+  "description": "The seventh assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Hannes Moser <hannes@impossiblearts.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "^7.1.1"
+  }
+}
