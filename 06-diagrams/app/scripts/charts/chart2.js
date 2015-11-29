@@ -22,9 +22,11 @@ function draw(chartId, data, width, height, margin) {
     return d.driverId
   }))
 
-  y.domain(data.map(function(d) {
-    return d.time
-  }))
+  y.domain([
+    0, d3.max(data, function(d) {
+      return timeToMilliseconds(d.time)
+    })
+  ])
 
   svg
     .append('g')
@@ -35,7 +37,7 @@ function draw(chartId, data, width, height, margin) {
     .style('text-anchor', 'end')
     .attr('dx', '-.5em')
     .attr('dy', '.5em')
-    .attr('transform', 'rotate(-45)')
+    .attr('transform', 'rotate(-30)')
 
   svg
     .append('g')
@@ -47,7 +49,7 @@ function draw(chartId, data, width, height, margin) {
     .attr('y', 6)
     .attr('dy', '0.71em')
     .style('text-anchor', 'end')
-    .text('Time')
+    .text('Time in Milliseconds')
 
   svg
     .selectAll('bar')
@@ -62,11 +64,22 @@ function draw(chartId, data, width, height, margin) {
       return x.rangeBand()
     })
     .attr('y', function(d) {
-      return y(d.driverId)
+      console.log("TIME " + timeToMilliseconds(d.time))
+      console.log("y " + y(timeToMilliseconds(d.time)))
+      return y(timeToMilliseconds(d.time))
     })
     .attr('height', function(d) {
-      return height - y(d.time)
+      console.log("H " + height)
+      console.log(timeToMilliseconds(d.time))
+      return height - y(timeToMilliseconds(d.time))
     })
+}
+
+function timeToMilliseconds(time) {
+  let min = parseInt(time.charAt(0)) * 60000
+  let sec = parseInt(time.charAt(2) + time.charAt(3)) * 1000
+  let millisec = parseInt(time.charAt(5) + time.charAt(6) + time.charAt(7))
+  return min + sec + millisec
 }
 
 export default function(containerId, data) {
