@@ -1,5 +1,5 @@
 var should = require('should')
-var fixture = require('../src/fixture.js')
+var fixture = require('../src/fixture2.js')
 
 describe('fixture', function() {
 
