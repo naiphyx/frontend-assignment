@@ -7,6 +7,7 @@ import tplError from './templates/error.hbs'
 import barchart from './charts/barchart'
 import geo from './charts/geo'
 import chart2 from './charts/chart2'
+import threedonut from './charts/threedonut'
 
 const content = document.getElementById('content')
 
@@ -57,6 +58,7 @@ export function home() {
       barchart('chart1', driversData)
       geo('chart2', coursesData)
       chart2('chart3', lapsData)
+      threedonut('threedonut')
     })
     .catch(err => {
       globalError = err

@@ -1,0 +1,36 @@
+<h2>Drivers</h2>
+<p>
+  List of drivers.
+</p>
+<div class="row">
+  <div class="col-sm-12">
+    <svg id="chart" viewBox="{{viewBox}}">
+      <g transform="{{transformG}}">
+        <g class="x axis" transform="{{transformX}}"></g>
+        <g class="rects"></g>
+      </g>
+    </svg>
+  </div>
+</div>
+<table class="table table-hover table-condensed table-responsive">
+  <thead>
+  <th>Name</th>
+  <th>Nationality</th>
+  <th>Date of birth</th>
+  <th>URL</th>
+  </thead>
+  <tbody>
+  {{#each drivers}}
+    <tr>
+      <td><a href="/drivers/{{driverId}}">{{givenName}} {{familyName}}</a></td>
+      <td>{{nationality}}</td>
+      <td>{{dateOfBirth}}</td>
+      <td>
+        <a href="{{url}}" rel="external" target="_blank">
+          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+        </a>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
