@@ -3,10 +3,10 @@ import uuid from 'uuid'
 import tpl from '../templates/threedonut.hbs'
 
 const data = [
-  {label:"Wins", color: "#3366CC", value: 26},
-  {label:"Losses", color: "#DC3912",  value: 10},
-  {label:"OTWins", color: "#FF9900", value: 5},
-  {label:"OTLosses", color: "#109618", value: 3}
+  {label:"Wins", color: "#E7E0CE", value: 26},
+  {label:"Losses", color: "#7D4A53",  value: 10},
+  {label:"OTWins", color: "#A47466", value: 5},
+  {label:"OTLosses", color: "#C7AC99", value: 3}
 ]
 
 const Donut3D = {}
